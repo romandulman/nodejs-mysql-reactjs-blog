@@ -3,12 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var sqlServer = require('./config/sql-server')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/posts');
 
 var app = express();
+
+sqlServer.connection.connect();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
