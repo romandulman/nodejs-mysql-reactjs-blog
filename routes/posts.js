@@ -1,29 +1,25 @@
 var express = require('express');
 var router = express.Router();
-
 var postsCtl = require('../controllers/postsctl');
 
-/* GET home page. */
-/*router.get('/', function(req, res, next) {
-  res.render('index',);
-});*/
-
-router.get('/newpost', function(req, res, next) {
+router.get('/newpost', (req, res) => {
     res.render('newpost');
 });
-router.get('/addpost', function(req, res, next) {
+
+router.get('/addpost', (req, res) => {
 
 });
-router.get('/:id', function(req, res, next) {
 
+router.get('/:id', (req, res) => {
+    postsCtl.singlePost(req, res);
 });
-router.get('/:id/delete', function(req, res, next) {
+
+router.get('/:id/delete', (req, res) => {
     res.render('deletepost')
-
 });
 
-router.get('/:id/edit', function(req, res, next) {
-res.render('editpost')
+router.get('/:id/edit', (req, res) => {
+    postsCtl.editPost(req, res);
 });
 
 module.exports = router;

@@ -11,8 +11,8 @@ var postsRouter = require('./routes/posts');
 
 var app = express();
 
-sqlServer.connection.connect();
-
+//sqlServer.connection.connection.connect();
+sqlServer.connect();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

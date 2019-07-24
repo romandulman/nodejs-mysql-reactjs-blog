@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Blog - All Posts</title>
+    <title>Blog - Single Post</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -12,17 +12,19 @@
 <body>
 <%- include('partials/header') %>
 <div class="container">
-    <% posts.forEach(function(post) { %>
     <div class="post-preview">
         <a href="post.html">
-            <h2 class="post-title"><%= post.title %> </h2>
+            <h2><%= post.title %></h2>
         </a>
-        <p><%= post.title %><a href="/posts/<%= post.id %>"> Read more... </a></p>
+        <p><%= post.body %></p>
         <p class="post-meta">Posted by
             <a href="#">Start Bootstrap</a>
             on September 18, 2019</p>
     </div>
-    <% }) %>
+    <button href="/posts/<%= post.id %>/edit" type="button" class="btn btn-primary">Edit</button>
+    <a href="/posts/<%= post.id %>/delete">
+        <button type="button" class="btn btn-danger">Delete</button>
+    </a>
 </div>
 </body>
 </html>
