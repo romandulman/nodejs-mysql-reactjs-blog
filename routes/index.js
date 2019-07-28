@@ -5,5 +5,4 @@ var postsCtl = require('../controllers/postsctl');
 router.get('/', function(req, res) {
 postsCtl.allposts(req,res)
 });
-
 module.exports = router;

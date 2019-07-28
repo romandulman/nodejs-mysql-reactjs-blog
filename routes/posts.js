@@ -6,20 +6,12 @@ router.get('/newpost', (req, res) => {
     res.render('newpost');
 });
 
-router.get('/addpost', (req, res) => {
+router.post('/addpost',  postsCtl.addNewPost);
 
-});
+router.get('/:id', postsCtl.singlePost);
 
-router.get('/:id', (req, res) => {
-    postsCtl.singlePost(req, res);
-});
+router.get('/:id/delete', postsCtl.delPost);
 
-router.get('/:id/delete', (req, res) => {
-    res.render('deletepost')
-});
-
-router.get('/:id/edit', (req, res) => {
-    postsCtl.editPost(req, res);
-});
+router.get('/:id/edit', postsCtl.editPost);
 
 module.exports = router;

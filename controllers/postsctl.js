@@ -9,6 +9,17 @@ class postsCtl {
         });
 
     };
+    addNewPost = (req, res) => {
+        let title = req.body.title;
+        let body = req.body.body;
+        sqlServer.query(`INSERT INTO posts (title,body) VALUES ("${title}", "${body}")`, (err, rows, fields) => {
+            if (err) throw err;
+        //    res.render('index', {posts: rows})
+        });
+
+        res.redirect('http://localhost:3000')
+
+    };
     singlePost = (req, res) => {
         let id = req.params.id;
         sqlServer.query(`SELECT * FROM posts WHERE id = ${id} LIMIT 1`, (err, rows, fields) => {
@@ -18,7 +29,7 @@ class postsCtl {
     };
 
     delPost = (req, res) => {
-
+console.log(req.params.id)
     };
 
     editPost = (req, res) => {

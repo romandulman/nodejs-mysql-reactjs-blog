@@ -21,10 +21,35 @@
             <a href="#">Start Bootstrap</a>
             on September 18, 2019</p>
     </div>
-    <button href="/posts/<%= post.id %>/edit" type="button" class="btn btn-primary">Edit</button>
-    <a href="/posts/<%= post.id %>/delete">
-        <button type="button" class="btn btn-danger">Delete</button>
-    </a>
+  <a href="/posts/<%= post.id %>> <button /edit" type="button" class="btn btn-primary">Edit</button> </a>
+    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete</button>
+</div>
+
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+This operation will delete post !
+                ARE YOU SURE ?
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <a href="/posts/<%= post.id %>/delete" >  <button type="button" class="btn btn-" data-dismiss="modal" id="delPostBtn" >Delete</button> </a>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
 </div>
 </body>
 </html>
