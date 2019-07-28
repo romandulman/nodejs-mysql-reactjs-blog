@@ -13,14 +13,14 @@
 <%- include('partials/header') %>
 <h1 class="text-center">Edit Post</h1>
 <div class="container">
-    <form action="/posts/newpost">
+    <form id="editForm" action="/posts/<%= post.id %>/edit?_method=PUT" method="POST">
         <div class="form-group">
             <label for="usr">Title:</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" value="<%= post.title %>" name="title">
         </div>
         <div class="form-group">
             <label for="comment">Comment:</label>
-            <textarea class="form-control" rows="5" id="body" name="body"></textarea>
+            <textarea class="form-control" rows="5" id="body" name="body"><%= post.body %></textarea>
         </div>
         <div class="form-group">
             <label for="sel1">Category:</label>

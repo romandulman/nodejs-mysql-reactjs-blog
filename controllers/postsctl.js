@@ -42,7 +42,17 @@ class postsCtl {
         let id = req.params.id;
         sqlServer.query(`SELECT * FROM posts WHERE id = ${id} LIMIT 1`, (err, rows, fields) => {
             if (err) throw err;
-            res.render('edit', {post: rows[0]})
+            res.render('editpost', {post: rows[0]})
+        })
+    }
+
+    updatePost = (req, res) => {
+        let id = req.params.id;
+        let title = req.body.title;
+        let body = req.body.body;
+        sqlServer.query(`UPDATE posts SET title = "${title}" , body= "${body}" WHERE id = ${id}`, (err, rows, fields) => {
+            if (err) throw err;
+            res.redirect("/");
         })
     }
 
