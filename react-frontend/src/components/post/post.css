@@ -1,0 +1,38 @@
+.postBody {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 230px;
+    width: 220px;
+    padding: 25px;
+    padding-top: 5px;
+    margin: 25px;
+}
+
+
+p {
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.outText {
+    text-align: left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.bodyText {
+    max-width: 170px;
+    font-size: 11pt;
+
+}
+
+.CloseIco {
+    float: right;
+    cursor: pointer;
+}
