@@ -13,7 +13,7 @@ import './addPost.css';
 class AddPost extends Component {
     state = {
         open: false,
-        body:'',
+        body: '',
         title: '',
     };
 
@@ -27,20 +27,20 @@ class AddPost extends Component {
             Title: this.state.title,
             Body: this.state.body,
         };
-       this.props.AddTaskHandler(post.Title, post.Body)
+        this.props.AddTaskHandler(post.Title, post.Body)
     };
-    
+
     render() {
         return (
             <div>
-                    <Fab  onClick={this.handleView} name="add" color="primary" aria-label="Add" className="fixedbutton">
-                        <AddIcon/>
-                    </Fab>
+                <Fab onClick={this.handleView} name="add" color="primary" aria-label="Add" className="fixedbutton">
+                    <AddIcon/>
+                </Fab>
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleView}
                     aria-labelledby="form-dialog-title">
-                    <DialogTitle id="form-dialog-title">Add New Task</DialogTitle>
+                    <DialogTitle id="form-dialog-title">Add New Post</DialogTitle>
                     <DialogContent>
                         <TextField
                             autoFocus
@@ -52,25 +52,24 @@ class AddPost extends Component {
                             }}
                             fullWidth
                         />
-
                         <TextField
-                            autoFocus
-                            margin="dense"
-                            label="Post body..."
-                            type="text"
+                            id="standard-multiline-static"
+                            label="Post Body ....."
+                            multiline
+                            rows="4"
+                            className='texField'
                             onChange={(e) => {
                                 this.setState({body: e.target.value})
                             }}
-                            fullWidth
+                            margin="normal"
                         />
-
                     </DialogContent>
                     <DialogActions>
                         <Button onClick={this.handleView} color="primary">
                             Cancel
                         </Button>
                         <Button onClick={this.handleSave} color="primary">
-                            Publish Task
+                            Publish Post
                         </Button>
                     </DialogActions>
                 </Dialog>

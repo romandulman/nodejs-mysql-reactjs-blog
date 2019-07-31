@@ -32,7 +32,7 @@ class splashDialog extends Component {
                     <DialogTitle id="alert-dialog-title">{"Hi!"}</DialogTitle>
                     <DialogContent>
                         <DialogContentText id="alert-dialog-description">
-                            This is simple React based Task Board, click on the blue <b>+</b> button to add task
+                            This is simple React based Blog, click on the blue <b>+</b> button to add Blog Post
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
