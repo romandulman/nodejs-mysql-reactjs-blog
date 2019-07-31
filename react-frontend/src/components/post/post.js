@@ -13,7 +13,7 @@ class Post extends Component {
         return (
             <div className="postBody" id={this.props.noteId}>
                 <CloseIcon className="CloseIco"  onClick={this.handleRemove}/>
-                <p className="outText"> <b>{this.props.task}</b></p>
+                <p className="outText"> <b>{this.props.title}</b></p>
                 <p className="bodyText"> {this.props.body}</p>
             </div>
         )

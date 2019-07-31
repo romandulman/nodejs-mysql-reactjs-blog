@@ -13,8 +13,8 @@ import './addPost.css';
 class AddPost extends Component {
     state = {
         open: false,
-        selectedDate: new Date('2019-04-29T21:11:54'),
-        task: '',
+        body:'',
+        title: '',
     };
 
     handleView = () => {
@@ -23,11 +23,11 @@ class AddPost extends Component {
 
     handleSave = () => {
         this.handleView();
-        let task = {
-            Task: this.state.task,
-            dateTime: String(this.state.selectedDate),
+        let post = {
+            Title: this.state.title,
+            Body: this.state.body,
         };
-       this.props.AddTaskHandler(task.Task, task.dateTime)
+       this.props.AddTaskHandler(post.Title, post.Body)
     };
     
     render() {
@@ -45,15 +45,24 @@ class AddPost extends Component {
                         <TextField
                             autoFocus
                             margin="dense"
-                            label="Task..."
+                            label="Post Title..."
                             type="text"
                             onChange={(e) => {
-                                this.setState({task: e.target.value})
+                                this.setState({title: e.target.value})
                             }}
                             fullWidth
                         />
 
-                      //////
+                        <TextField
+                            autoFocus
+                            margin="dense"
+                            label="Post body..."
+                            type="text"
+                            onChange={(e) => {
+                                this.setState({body: e.target.value})
+                            }}
+                            fullWidth
+                        />
 
                     </DialogContent>
                     <DialogActions>

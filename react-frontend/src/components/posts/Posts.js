@@ -10,16 +10,18 @@ class TaskList extends Component {
         data: []
     };
 
-    AddTaskHandler = (task, DateTime) => {
+    AddTaskHandler = (title, body) => {
        let arr = {
-            Task: task,
-            dateTime: DateTime
+            Title: title,
+            Body: body
         };
+
         this.setState ({
             data: [...this.state.data, arr]
         },
         () => localStorage.setItem("TaskList", JSON.stringify(this.state.data))
         )
+
     };
 
     RemoveHandler = (id) => {
@@ -44,7 +46,7 @@ class TaskList extends Component {
                             this.state.data.map((notes, index) =>
 
                                 <Col sm={4}> <Post  RemoveHandler={this.RemoveHandler} noteId={index}
-                                                   task={notes.Task} dateTime={String(notes.body)}/> </Col>
+                                                   title={notes.Title} body={String(notes.Body)}/> </Col>
                             )
                         }
                     </Row>
