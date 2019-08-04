@@ -6,6 +6,7 @@ const session = require('express-session');
 const logger = require('morgan');
 const sqlServer = require('./config/sql-server');
 const methodOverride = require('method-override');
+var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -13,6 +14,7 @@ var postsRouter = require('./routes/posts');
 var apiRouter = require('./routes/api');
 
 var app = express();
+app.use(cors())
 sqlServer.connect();
 app.use(session({
     secret: 'blog2019',

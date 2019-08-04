@@ -31,10 +31,28 @@ class TaskList extends Component {
         this.setState({data});
     };
 
+
     componentDidMount() {
-        let data = JSON.parse(localStorage.getItem("TaskList"));
-        if (data != null) this.setState({data});
-    };
+        fetch("http://localhost:3000/api")
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    this.setState({data});
+                }
+            )
+
+    }
+
+
+
+
+
+
+       // let data = JSON.parse(localStorage.getItem("TaskList"));
+       // if (data != null) this.setState({data});
+
+
+
 
     render() {
         return (
@@ -46,7 +64,7 @@ class TaskList extends Component {
                             this.state.data.map((notes, index) =>
 
                                 <Col sm={4}> <Post  RemoveHandler={this.RemoveHandler} noteId={index}
-                                                   title={notes.Title} body={String(notes.Body)}/> </Col>
+                                                   title={notes.title} body={String(notes.body)}/> </Col>
                             )
                         }
                     </Row>

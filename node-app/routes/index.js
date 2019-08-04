@@ -9,8 +9,7 @@ next()
     }else{
         res.render('login')
     }
-}
-router.get('/',checkAuth, (req, res)=> {
-postsCtl.allposts(req,res)
-});
+};
+router.get('/',checkAuth,(req,res) =>
+    postsCtl.allposts(false,req,res));
 module.exports = router;

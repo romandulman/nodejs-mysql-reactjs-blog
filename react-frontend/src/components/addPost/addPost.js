@@ -10,6 +10,8 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import './addPost.css';
 
+
+
 class AddPost extends Component {
     state = {
         open: false,
@@ -17,18 +19,34 @@ class AddPost extends Component {
         title: '',
     };
 
+
     handleView = () => {
         (this.state.open) ? this.setState({open: false}) : this.setState({open: true});
     };
 
-    handleSave = () => {
-        this.handleView();
-        let post = {
-            Title: this.state.title,
-            Body: this.state.body,
-        };
-        this.props.AddTaskHandler(post.Title, post.Body)
+
+    handleAdd = () => {
+      const  post = { ///let?
+          title: this.state.title,
+          body: this.state.body,
+      }
+
+
+        fetch("/posts/addpost", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ post })
+        })
+          //  .then(response => response.json())
+            .then(() => {
+               // let AddnewData = [...this.props.GuestsList, res];
+                this.props.AddTaskHandler(post.title, post.body);
+                this.handleView();
+                console.log(post)
+            });
     };
+
+
 
     render() {
         return (
@@ -68,7 +86,7 @@ class AddPost extends Component {
                         <Button onClick={this.handleView} color="primary">
                             Cancel
                         </Button>
-                        <Button onClick={this.handleSave} color="primary">
+                        <Button onClick={this.handleAdd} color="primary">
                             Publish Post
                         </Button>
                     </DialogActions>
