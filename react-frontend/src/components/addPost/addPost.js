@@ -11,7 +11,6 @@ import AddIcon from '@material-ui/icons/Add';
 import './addPost.css';
 
 
-
 class AddPost extends Component {
     state = {
         open: false,
@@ -26,26 +25,23 @@ class AddPost extends Component {
 
 
     handleAdd = () => {
-      const  post = { ///let?
-          title: this.state.title,
-          body: this.state.body,
-      }
+
+        const post = {
+            title: this.state.title,
+            body: this.state.body,
+        };
 
 
         fetch("/posts/addpost", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ post })
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({post})
         })
-          //  .then(response => response.json())
             .then(() => {
-               // let AddnewData = [...this.props.GuestsList, res];
                 this.props.AddTaskHandler(post.title, post.body);
                 this.handleView();
-                console.log(post)
             });
     };
-
 
 
     render() {

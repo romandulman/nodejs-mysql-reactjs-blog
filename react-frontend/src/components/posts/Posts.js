@@ -7,28 +7,41 @@ import AddPost from '../../components/addPost/addPost'
 class TaskList extends Component {
 
     state = {
+        showDelDialog:false ,
         data: []
     };
 
     AddTaskHandler = (title, body) => {
        let arr = {
-            Title: title,
-            Body: body
+            title: title,
+            body: body
         };
 
         this.setState ({
             data: [...this.state.data, arr]
-        },
-        () => localStorage.setItem("TaskList", JSON.stringify(this.state.data))
-        )
+        })
 
     };
+
+
 
     RemoveHandler = (id) => {
         const data = this.state.data;
         data.splice(id, 1);
         localStorage.setItem("TaskList", JSON.stringify(data));
         this.setState({data});
+
+        fetch("/posts/"+id+"/delete", {
+            method: "DELETE",
+            headers: {"Content-Type": "application/json"},
+          //  body: JSON.stringify({id})
+        })
+            .then(res => res.json())
+            .then(
+                (data) => {
+                    this.setState({data});
+                }
+            );
     };
 
 
@@ -43,17 +56,6 @@ class TaskList extends Component {
 
     }
 
-
-
-
-
-
-       // let data = JSON.parse(localStorage.getItem("TaskList"));
-       // if (data != null) this.setState({data});
-
-
-
-
     render() {
         return (
             <div>
@@ -63,7 +65,7 @@ class TaskList extends Component {
                         {
                             this.state.data.map((notes, index) =>
 
-                                <Col sm={4}> <Post  RemoveHandler={this.RemoveHandler} noteId={index}
+                                <Col sm={4}> <Post  RemoveHandler={this.RemoveHandler} noteId={notes.id}
                                                    title={notes.title} body={String(notes.body)}/> </Col>
                             )
                         }

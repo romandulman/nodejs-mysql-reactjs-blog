@@ -3,9 +3,8 @@ var router = express.Router();
 var postsCtl = require('../controllers/postsctl');
 
 
-router.get('/', (req, res)=> {
-    postsCtl.allposts(true,req,res)
-});
+router.get('/', postsCtl.allposts)
+
 
 router.get('/newpost', (req, res) => {
     res.render('newpost');

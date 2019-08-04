@@ -10,7 +10,7 @@ router.post('/addpost',  postsCtl.addNewPost);
 
 router.get('/:id', postsCtl.singlePost);
 
-router.get('/:id/delete', postsCtl.delPost);
+router.delete('/:id/delete', postsCtl.delPost);
 
 router.get('/:id/edit', postsCtl.editPost);
 
