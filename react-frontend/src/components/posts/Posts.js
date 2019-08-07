@@ -26,22 +26,27 @@ class TaskList extends Component {
 
 
     RemoveHandler = (id) => {
-        const data = this.state.data;
-        data.splice(id, 1);
-        localStorage.setItem("TaskList", JSON.stringify(data));
-        this.setState({data});
-
+alert(id)
         fetch("/posts/"+id+"/delete", {
             method: "DELETE",
             headers: {"Content-Type": "application/json"},
           //  body: JSON.stringify({id})
         })
-            .then(res => res.json())
+           /* .then(res => res.json())
             .then(
                 (data) => {
                     this.setState({data});
                 }
-            );
+            );*/
+            .then(()=>{
+                fetch("http://localhost:3000/api")
+                    .then(res => res.json())
+                    .then(
+                        (data) => {
+                            this.setState({data});
+                        }
+                    )
+            })
     };
 
 
