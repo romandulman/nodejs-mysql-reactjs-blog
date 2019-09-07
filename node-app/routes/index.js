@@ -1,16 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var postsCtl = require('../controllers/postsctl');
+const authCheck = require('../middlewares/authCheck');
 
-const checkAuth = (req, res, next) => {
-    const sess = req.session;
-    if (sess.username) {
-        next()
-    } else {
-        res.render('login')
-    }
-};
 
-router.get('/', checkAuth, postsCtl.allposts);
+router.get('/', authCheck(), postsCtl.allposts);
 
 module.exports = router;

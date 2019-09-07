@@ -26,7 +26,7 @@ class TaskList extends Component {
 
 
     RemoveHandler = (id) => {
-alert(id)
+
         fetch("/posts/"+id+"/delete", {
             method: "DELETE",
             headers: {"Content-Type": "application/json"},
@@ -39,7 +39,7 @@ alert(id)
                 }
             );*/
             .then(()=>{
-                fetch("http://localhost:3000/api")
+                fetch("/api")
                     .then(res => res.json())
                     .then(
                         (data) => {
@@ -51,7 +51,7 @@ alert(id)
 
 
     componentDidMount() {
-        fetch("http://localhost:3000/api")
+        fetch("/api")
             .then(res => res.json())
             .then(
                 (data) => {

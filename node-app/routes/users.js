@@ -1,29 +1,20 @@
-var express = require('express');
-const session = require('express-session');
-var router = express.Router();
-var userCtl = require('../controllers/userctl');
+const express = require("express");
+const session = require("express-session");
+const router = express.Router();
+const userCtl = require("../controllers/userctl");
+const authCheck = require("../middlewares/authCheck");
 
-const checkAuth =(req,res,next) =>{
-    const sess = req.session;
-    if(sess.username) {
-        next()
-    }else{
-        res.render('login')
-    }
-}
+router.post("/login", userCtl.userLogin);
 
-
-router.post('/login', userCtl.userLogin);
-
-router.get('/login', (req, res) => {
-    res.render('login');
+router.get("/login", (req, res) => {
+  res.render("login");
 });
 
-router.get('/logout', userCtl.userLogout);
+router.get("/logout", userCtl.userLogout);
 
-router.get('/register', userCtl.userRegister);
+router.get("/register", userCtl.userRegister);
 
-router.get('/profile',checkAuth, (req, res) => {
-    res.render('profile');
+router.get("/profile", authCheck, (req, res) => {
+  res.render("profile");
 });
 module.exports = router;
